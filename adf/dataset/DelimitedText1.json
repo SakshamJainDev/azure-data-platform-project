@@ -3,19 +3,13 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureLsSource",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				}
-			}
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"fileName": {
+			"containerName": {
 				"type": "string"
 			},
-			"folderPath": {
+			"fileName": {
 				"type": "string"
 			}
 		},
@@ -28,8 +22,8 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"folderPath": {
-					"value": "@dataset().folderPath",
+				"fileSystem": {
+					"value": "@dataset().containerName",
 					"type": "Expression"
 				}
 			},
