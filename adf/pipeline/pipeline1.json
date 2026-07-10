@@ -19,7 +19,7 @@
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "*",
+							"fileName": "/*",
 							"folderPath": "landing/"
 						}
 					},
