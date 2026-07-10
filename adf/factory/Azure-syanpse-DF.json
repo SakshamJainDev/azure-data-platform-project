@@ -1,0 +1,15 @@
+{
+	"name": "Azure-syanpse-DF",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "17fca45e-1423-46cb-8a2f-0e5591451791",
+		"tenantId": "f8d5a070-bf5e-43b9-a834-e2bac8dd24fa"
+	}
+}
