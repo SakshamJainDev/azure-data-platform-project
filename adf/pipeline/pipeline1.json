@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Get Metadata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems\n",
+						"value": "@activity('Get Metadata').output.childItems\n",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -76,7 +76,7 @@
 									"referenceName": "DelimitedText1",
 									"type": "DatasetReference",
 									"parameters": {
-										"containerName": "'landing'",
+										"containerName": "landing",
 										"fileName": {
 											"value": "@item().name",
 											"type": "Expression"
@@ -99,7 +99,7 @@
 				}
 			},
 			{
-				"name": "Get Metadata1",
+				"name": "Get Metadata",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
