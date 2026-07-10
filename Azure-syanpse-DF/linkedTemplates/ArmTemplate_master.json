@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Azure-syanpse-DF"
+		},
+		"AzureLsSink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureLsSink'"
+		},
+		"AzureLsSource_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureLsSource'"
+		},
+		"AzureLsSink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azureaustraliaeastsa.dfs.core.windows.net/"
+		},
+		"AzureLsSource_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azureaustraliaeastsa.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "Azure-syanpse-DF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureLsSink_accountKey": {
+						"value": "[parameters('AzureLsSink_accountKey')]"
+					},
+					"AzureLsSource_accountKey": {
+						"value": "[parameters('AzureLsSource_accountKey')]"
+					},
+					"AzureLsSink_properties_typeProperties_url": {
+						"value": "[parameters('AzureLsSink_properties_typeProperties_url')]"
+					},
+					"AzureLsSource_properties_typeProperties_url": {
+						"value": "[parameters('AzureLsSource_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
