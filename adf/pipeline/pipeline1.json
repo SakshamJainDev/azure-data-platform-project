@@ -48,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata').output.itemsName",
+						"value": "@activity('Get Metadata').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -107,13 +107,20 @@
 							"inputs": [
 								{
 									"referenceName": "DelimitedText1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": "@item().name"
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "DelimitedText1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": "@item().name",
+										"folderPath": "bronze"
+									}
 								}
 							]
 						}
