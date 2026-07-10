@@ -19,7 +19,8 @@
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference",
 						"parameters": {
-							"containerName": "landing"
+							"containerName": "landing",
+							"fileName": "@string('')"
 						}
 					},
 					"fieldList": [
