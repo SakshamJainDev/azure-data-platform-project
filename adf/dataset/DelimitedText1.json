@@ -3,7 +3,13 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureLsSource",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"fileName": {
