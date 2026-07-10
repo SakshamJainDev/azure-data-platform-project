@@ -129,6 +129,64 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-02.australiaeast.logic.azure.com:443/workflows/096801f6885f4b159adff5306c8677ae/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=mVmBQVPejCE9euSa3bdjNHFIgHEwoMQ8EVmq35uUGXw",
+					"body": {
+						"value": "{\n    \"pipelineName\": \"@{pipeline().Pipeline}\",\n    \"status\":\"Succeeded\",\n    \"runId\":\"@{pipeline().RunID}\",\n    \"time\": \"@{utcNow()}\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "fails",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-02.australiaeast.logic.azure.com:443/workflows/096801f6885f4b159adff5306c8677ae/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=mVmBQVPejCE9euSa3bdjNHFIgHEwoMQ8EVmq35uUGXw",
+					"body": {
+						"pipelineName": "@{pipeline().Pipeline}",
+						"status": "Failed",
+						"runId": "@{pipeline().RunID}",
+						"time": "@{utcNow()}"
+					}
+				}
 			}
 		],
 		"annotations": []
